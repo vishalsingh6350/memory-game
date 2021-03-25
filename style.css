@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(images/bg-cartoonish\(1\).jpg);
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top;
+    font-family: 'Poppins', sans-serif;
+}
+
+.overlay {
+    /* Rectangle 1 */
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(127.63deg, rgba(165, 0, 128, 0.35) 17.59%, rgba(29, 171, 190, 0.46) 71.77%);
+    backdrop-filter: blur(52px);
+    /* Note: backdrop-filter has minimal browser support */
+    z-index: -1;
+}
+
+.main-container {
+    width: 600px;
+    background: #15202b;
+    box-shadow: -7px 1px 24px 1px rgba(0, 0, 0, 0.4), 7px 0px 22px rgba(0, 0, 0, 0.4);
+    margin: auto;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    border: 5px dashed #FF005C;
+    border: 5px dashed #03e9f4;
+}
+
+.cards-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 310px;
+    margin: auto;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    grid-gap: 10px;
+    background: #22303c;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    animation: in 0.3s linear;
+}
+
+@keyframes in {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+
+/* .cards-container:hover {} */
+
+
+/* @keyframes changeColor {
+    0% {
+        background-color: #03e9f4;
+        box-shadow: 0px 0px 20px #8ffbff;
+    }
+    50% {
+        background-color: #6aff6e;
+        box-shadow: 0px 0px 20px #6aff6e;
+    }
+    100% {
+        background-color: #ffff82;
+        box-shadow: 0px 0px 20px #ffff82;
+    }
+} */
+
+.card {
+    height: 90px;
+    width: 90px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.frontSide {
+    width: 100%;
+    height: 100%;
+    background-color: #8899a6;
+    background-color: #03e9f4;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.backSide {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+img {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+}
+
+.text {
+    width: 330px;
+    margin: 10% auto;
+    color: #03e9f4;
+    font-weight: 800;
+    font-size: 1.2em;
+    text-align: center;
+    animation: in-right 0.2s linear;
+}
+
+@keyframes in-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.scorecardContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #03e8f471;
+    backdrop-filter: blur(52px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.scoreCard {
+    color: white;
+    margin: 50px;
+    text-align: center;
+}
+
+button {
+    width: 60%;
+    padding: 10px 20px;
+    background-color: #FF005C;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 50px;
+}
+
+.number {
+    font-weight: 700;
+    color: rgb(241, 255, 41);
+    font-size: 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background: unset;
+    }
+    .overlay {
+        display: none;
+    }
+    .main-container {
+        width: 100%;
+    }
+    .cards-container {
+        transform: scale(0.8);
+        position: unset;
+        left: unset;
+        bottom: unset;
+        animation: in 0.3s linear;
+        margin-top: 90px;
+    }
+    @keyframes in {
+        0% {
+            transform: unset;
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: unset;
+            opacity: 1;
+            transform: scale(0.8);
+        }
+    }
+    .text {
+        width: 75%;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .scorecardContainer {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .cards-container {
+        padding: 10px;
+        width: 280px;
+        grid-template-columns: repeat(3, 80px);
+        grid-gap: 10px;
+    }
+    .card {
+        height: 80px;
+        width: 80px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 0.7s ease;
+    }
+    img {
+        width: 60px;
+        height: 60px;
+        margin: 10px;
+    }
+}
